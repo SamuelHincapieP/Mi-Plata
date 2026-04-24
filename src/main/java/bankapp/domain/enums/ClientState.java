@@ -1,4 +1,4 @@
 package bankapp.domain.enums;
 
-public class ClientState {
+public enum ClientState {
 }

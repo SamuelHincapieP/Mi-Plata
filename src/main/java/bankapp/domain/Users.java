@@ -6,16 +6,14 @@ import java.util.Scanner;
 public class Users {
     Scanner sc = new Scanner(System.in);
 
-    // Atributos de la clase Users
-
     protected int id;
     protected String name;
     protected String email;
     protected String password;
-    protected  int attemptsFailed;
+    protected int attemptsFailed;
     protected boolean accountBlocked;
 
-    //construcotres
+    // constructores
     public Users(int id, String name, String email, String password, int attemptsFailed, boolean accountBlocked) {
         this.id = id;
         this.name = name;
@@ -26,11 +24,13 @@ public class Users {
     }
 
     public Users() {
-
     }
 
-    //get y set
+    public Users(String email) {
+        this.email = email;
+    }
 
+    // get y set
     public int getId() {
         return id;
     }
@@ -79,46 +79,40 @@ public class Users {
         this.accountBlocked = accountBlocked;
     }
 
-    //metodos
-
-    public <T> void createUser(T user){
-
+    // metodos
+    public <T> void createUser(T user) {
     }
 
-    public Users createUser(Users user){
+    public Users createUser(Users user) {
         return user;
     }
 
-    public Users updateUser(Users user){
+    public Users updateUser(Users user) {
         return user;
     }
 
-    public List<Users> getAllUsers(){
+    public List<Users> getAllUsers() {
         return null;
     }
 
-    public Users getUserById(int id){
+    public Users getUserById(int id) {
         return null;
     }
 
-    public void deleteUser(int id){
-
+    public void deleteUser(int id) {
     }
 
-    public boolean login(String password){
+    public boolean login(String password) {
         return false;
     }
 
-    public void register(String name, String password){
-
+    public void register(String name, String password) {
     }
 
-    public void logout(){
-
+    public void logout() {
     }
 
-    public void changePassword(String newPassword){
-
+    public void changePassword(String newPassword) {
     }
 }
 
