@@ -12,7 +12,15 @@ public class Admin extends Users {
         this.permissions = permissions;
     }
 
-    //get y unal
+    public Admin() {
+        super();
+    }
+
+    public Admin(String email) {
+        super(email);
+    }
+
+    // get y set
     public String getRol() {
         return rol;
     }
@@ -29,37 +37,16 @@ public class Admin extends Users {
         this.permissions = permissions;
     }
 
-    //metodos
-
-
     @Override
-    public Users createUser(Users user) {
-        return super.createUser(user);
-    }
-
-    @Override
-    public Users updateUser(Users user) {
-        return super.updateUser(user);
-    }
-
-    @Override
-    public Users getUserById(int id) {
-        return super.getUserById(id);
-    }
-
-    @Override
-    public int getId() {
-        return super.getId();
-    }
-
-    @Override
-    public int getAttemptsFailed() {
-        return super.getAttemptsFailed();
-    }
-
-    @Override
-    public void deleteUser(int id) {
-        super.deleteUser(id);
+    public String toString() {
+        return "Admin{" +
+                "rol='" + rol + '\'' +
+                ", permissions='" + permissions + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", accountBlocked=" + accountBlocked +
+                '}';
     }
 }
 
