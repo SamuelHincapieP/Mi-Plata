@@ -1,4 +1,15 @@
 package bankapp.service;
 
+import bankapp.domain.Account;
+
 public interface AccountService {
+
+
+
+
+
+
+
+    // MP-6: Retirar dinero
+    public Account withdraw(int clientId, double amount);
 }
