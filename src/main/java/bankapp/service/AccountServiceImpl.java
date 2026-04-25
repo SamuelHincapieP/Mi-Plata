@@ -103,7 +103,6 @@ public class AccountServiceImpl {
 
 
 
-
     // ── MP-6: Retirar ──────────────────────────────────────────────────────
     @Override
     public Account withdraw(int clientId, double amount) {
@@ -129,4 +128,71 @@ public class AccountServiceImpl {
         System.out.println("  Nuevo saldo: $" + String.format("%.2f", account.getBalance()));
         return account;
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ── MP-8: Transferencia ────────────────────────────────────────────────
+    @Override
+    public boolean transfer(int fromClientId, String toAccountNumber, double amount) {
+        Account origin = validarCuentaActiva(fromClientId);
+        if (origin == null) return false;
+
+        if (amount <= 0) {
+            System.out.println("  [!] El monto debe ser mayor a 0.");
+            return false;
+        }
+        if (origin.getAccountNumber().equals(toAccountNumber)) {
+            System.out.println("  [!] No puede transferir a la misma cuenta.");
+            return false;
+        }
+
+        Account destination = accountRepository.findAccountByNumber(toAccountNumber);
+        if (destination == null) {
+            System.out.println("  [!] Cuenta destino no encontrada: " + toAccountNumber);
+            return false;
+        }
+        if (destination.getAccountState() == AccountState.BLOQUEADA) {
+            System.out.println("  [!] La cuenta destino esta bloqueada.");
+            return false;
+        }
+        if (origin.getBalance() < amount) {
+            System.out.println("  [!] Saldo insuficiente. Saldo: $"
+                    + String.format("%.2f", origin.getBalance()));
+            return false;
+        }
+
+        origin.setBalance(origin.getBalance() - amount);
+        destination.setBalance(destination.getBalance() + amount);
+        accountRepository.updateAccount(origin);
+        accountRepository.updateAccount(destination);
+
+        registrarMovimiento(origin, MovementTypeEnum.TRANSFERENCIA_ENVIADA,
+                amount, "Transferencia a " + toAccountNumber);
+        registrarMovimiento(destination, MovementTypeEnum.TRANSFERENCIA_RECIBIDA,
+                amount, "Transferencia desde " + origin.getAccountNumber());
+
+        System.out.println("  [OK] Transferencia exitosa!");
+        System.out.println("  Nuevo saldo: $" + String.format("%.2f", origin.getBalance()));
+        return true;
+    }
+
+
