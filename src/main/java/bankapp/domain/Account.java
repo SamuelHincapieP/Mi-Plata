@@ -1,72 +1,101 @@
 package bankapp.domain;
 
-import bankapp.domain.enums.AccountState;
-import bankapp.domain.enums.AccountTypeEnum;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
 
-    private int id;
-    private String accountNumber;
-    private double balance;
-    private AccountTypeEnum accountType;
-    private AccountState accountState;
-    private String createDate;
-    private int clientId;
-    private List<Movement> movements;
+    int id;
+    String countNumber;
+    double salary;
+    boolean state;
+    String createDate;
+    List<Movement> movements;
 
-    // constructor completo
-    public Account(int id, String accountNumber, double balance, AccountTypeEnum accountType,
-                   AccountState accountState, String createDate, int clientId) {
+    //constructos
+    public Account(int id, String countNumber, double salary, boolean state, String createDate, List<Movement> movements) {
         this.id = id;
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-        this.accountType = accountType;
-        this.accountState = accountState;
+        this.countNumber = countNumber;
+        this.salary = salary;
+        this.state = state;
         this.createDate = createDate;
-        this.clientId = clientId;
-        this.movements = new ArrayList<>();
+        this.movements = movements;
     }
 
-    public Account() {
-        this.movements = new ArrayList<>();
+    //get y set
+    public int getId() {
+        return id;
     }
 
-    // get y set
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getAccountNumber() { return accountNumber; }
-    public void setAccountNumber(String accountNumber) { this.accountNumber = accountNumber; }
+    public String getCountNumber() {
+        return countNumber;
+    }
 
-    public double getBalance() { return balance; }
-    public void setBalance(double balance) { this.balance = balance; }
+    public void setCountNumber(String countNumber) {
+        this.countNumber = countNumber;
+    }
 
-    public AccountTypeEnum getAccountType() { return accountType; }
-    public void setAccountType(AccountTypeEnum accountType) { this.accountType = accountType; }
+    public double getSalary() {
+        return salary;
+    }
 
-    public AccountState getAccountState() { return accountState; }
-    public void setAccountState(AccountState accountState) { this.accountState = accountState; }
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
-    public String getCreateDate() { return createDate; }
-    public void setCreateDate(String createDate) { this.createDate = createDate; }
+    public boolean isState() {
+        return state;
+    }
 
-    public int getClientId() { return clientId; }
-    public void setClientId(int clientId) { this.clientId = clientId; }
+    public void setState(boolean state) {
+        this.state = state;
+    }
 
-    public List<Movement> getMovements() { return movements; }
-    public void setMovements(List<Movement> movements) { this.movements = movements; }
+    public String getCreateDate() {
+        return createDate;
+    }
 
-    @Override
-    public String toString() {
-        return "==============================\n" +
-                "Cuenta #" + accountNumber + "\n" +
-                "Tipo    : " + accountType.getDescription() + "\n" +
-                "Saldo   : $" + String.format("%.2f", balance) + "\n" +
-                "Estado  : " + accountState.getDescription() + "\n" +
-                "Creada  : " + createDate + "\n" +
-                "==============================";
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public List<Movement> getMovements() {
+        return movements;
+    }
+
+    public void setMovements(List<Movement> movements) {
+        this.movements = movements;
+    }
+
+    //metodos
+
+    public <T> void createAccount(T account) {
+
+    }
+
+    public Account createAccount(Account account) {
+        return account;
+    }
+
+
+    public Account updateAccount(Account account) {
+        return account;
+    }
+
+
+    public List<Account> getAllAccounts() {
+        return null;
+    }
+
+    public Account getAccountById(int id, Account account) {
+        return null;
+    }
+
+
+    public void deleteAccount(int id) {
+
     }
 }
