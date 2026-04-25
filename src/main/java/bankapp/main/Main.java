@@ -1,4 +1,4 @@
-package bankapp.main_noUtil;
+package bankapp.main;
 
 import bankapp.domain.*;
 import java.util.Date;
