@@ -83,3 +83,14 @@ public Account getAccountByClientId(int clientId) {
     System.out.println(account);
     return account;
 }
+
+// ── MP-5: Consignar ────────────────────────────────────────────────────
+@Override
+public Account deposit(int clientId, double amount) {
+    Account account = validarCuentaActiva(clientId);
+    if (account == null) return null;
+
+    if (amount <= 0) {
+        System.out.println("  [!] El monto debe ser mayor a 0.");
+        return account;
+    }
